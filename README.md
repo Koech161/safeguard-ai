@@ -101,6 +101,7 @@ Create a `.env` file in the `safeguard_be/` directory with these variables:
 
 ```env
 GEMINI_API_KEY=your-google-gemini-api-key
+ALLOWED_ORIGINS=http://localhost:3000
 
 ```
 
