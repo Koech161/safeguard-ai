@@ -30,7 +30,7 @@ export default function MpesaDonation() {
       copyable: true,
       field: 'till'
     },
-   
+
     {
       step: 5,
       instruction: 'Enter Amount',
@@ -42,7 +42,7 @@ export default function MpesaDonation() {
       instruction: 'Enter your M-Pesa PIN',
       icon: '🔒'
     },
-    
+
   ];
 
   const copyToClipboard = async (text, field) => {
@@ -61,7 +61,7 @@ export default function MpesaDonation() {
   };
 
   return (
-    <div className="p-8 bg-white shadow-xl dark:bg-gray-800 rounded-2xl">
+    <div className="max-w-2xl mx-auto p-8 bg-white shadow-xl dark:bg-gray-800 rounded-2xl">
       <div className="mb-8 text-center">
         <div className="flex items-center justify-center mb-4 space-x-3">
           <Heart className="w-10 h-10 text-green-600" />
@@ -70,7 +70,7 @@ export default function MpesaDonation() {
           </h2>
         </div>
         <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400">
-          Your donation helps us protect women and girls from digital abuse across Africa. 
+          Your donation helps us protect women and girls from digital abuse across Africa.
           Every contribution makes a difference.
         </p>
       </div>
@@ -88,7 +88,7 @@ export default function MpesaDonation() {
             Till Number
           </div>
         </div>
-        
+
         <div className="grid gap-4 md:grid-cols-2">
           <div className="p-4 bg-white rounded-lg dark:bg-green-800">
             <div className="flex items-center justify-between mb-2">
@@ -107,7 +107,7 @@ export default function MpesaDonation() {
             </div>
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">8458034</div>
           </div>
-          
+
           {/* <div className="p-4 bg-white rounded-lg dark:bg-green-800">
             <div className="flex items-center justify-between mb-2">
               <span className="font-medium text-green-800 dark:text-green-200">Account Number</span>
@@ -126,7 +126,7 @@ export default function MpesaDonation() {
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">SAFEGUARD</div>
           </div> */}
         </div>
-        
+
         {/* <div className="p-4 mt-4 rounded-lg bg-yellow-50 dark:bg-yellow-900">
           <p className="text-sm text-yellow-800 dark:text-yellow-200">
             <strong>Note:</strong> Use &quot;SAFEGUARD&quot; as the account number when prompted. 
@@ -140,28 +140,28 @@ export default function MpesaDonation() {
         <h3 className="mb-6 text-2xl font-bold text-center text-gray-900 dark:text-white">
           Payment Instructions
         </h3>
-        
+
         <div className="space-y-4">
           {mpesaSteps.map((step) => (
             <div
               key={step.step}
               className="flex items-start p-4 space-x-4 rounded-lg bg-gray-50 dark:bg-gray-700"
             >
-              <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 text-white bg-green-600 rounded-full">
+              <div className="flex items-center justify-center shrink-0 w-8 h-8 text-white bg-green-600 rounded-full">
                 {step.icon || step.step}
               </div>
-              
+
               <div className="flex-1">
                 <p className="font-medium text-gray-900 dark:text-white">
                   {step.instruction}
                 </p>
-                
+
                 {step.details && (
                   <div className="flex items-center justify-between mt-2">
                     <div className="px-3 py-1 font-mono text-sm text-gray-800 bg-white rounded dark:bg-gray-600 dark:text-gray-200">
                       {step.details}
                     </div>
-                    
+
                     {step.copyable && (
                       <button
                         onClick={() => copyToClipboard(step.details, step.field)}
@@ -177,7 +177,7 @@ export default function MpesaDonation() {
                     )}
                   </div>
                 )}
-                
+
                 {step.example && (
                   <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                     {step.example}
@@ -254,7 +254,7 @@ export default function MpesaDonation() {
         >
           I&apos;ve Completed My M-Pesa Payment
         </button>
-        
+
         {showConfirmation && (
           <div className="flex items-center justify-center p-3 mt-4 space-x-2 rounded-lg bg-green-50 dark:bg-green-900">
             <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
@@ -265,7 +265,7 @@ export default function MpesaDonation() {
         )}
       </div>
 
-     
+
     </div>
   );
 }
