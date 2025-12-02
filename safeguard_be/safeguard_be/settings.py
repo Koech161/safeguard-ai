@@ -30,7 +30,12 @@ SECRET_KEY = "django-insecure-xn=+s8rom$pxrotkfn0%(+5)9g-(bopm!qfb!8!z#1y)04s6fu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv("ALLOWED_HOST")]
+# Allow localhost for development
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                     'localhost:8000', '127.0.0.1:8000']
+else:
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOST", "").split(",")
 
 
 # Application definition
@@ -140,7 +145,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOWED_ORIGINS = [
     os.getenv("ALLOWED_ORIGINS")
 ]
-
 
 
 # Google Gemini API

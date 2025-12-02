@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Shield, AlertTriangle, Heart, BookOpen } from 'lucide-react';
 
 export default function ActionSteps({ actions, category, riskLevel = 'UNKNOWN' }) {
@@ -58,19 +59,19 @@ export default function ActionSteps({ actions, category, riskLevel = 'UNKNOWN' }
   };
 
   // Filter out empty actions and use fallback if needed
-  const validActions = actions && Array.isArray(actions) 
-    ? actions.filter(action => 
-        action && 
-        action.trim() !== '' && 
-        action.length > 2 && 
-        action !== 'IMMEDIATE_ACTIONS:' &&
-        !action.includes('IMMEDIATE_ACTIONS')
-      )
+  const validActions = actions && Array.isArray(actions)
+    ? actions.filter(action =>
+      action &&
+      action.trim() !== '' &&
+      action.length > 2 &&
+      action !== 'IMMEDIATE_ACTIONS:' &&
+      !action.includes('IMMEDIATE_ACTIONS')
+    )
     : [];
 
   // Use fallback actions if no valid actions are provided
-  const displayActions = validActions.length > 0 
-    ? validActions.slice(0, 4) 
+  const displayActions = validActions.length > 0
+    ? validActions.slice(0, 4)
     : getFallbackActions(category, riskLevel);
 
   const getCategoryIcon = (cat) => {
@@ -81,12 +82,14 @@ export default function ActionSteps({ actions, category, riskLevel = 'UNKNOWN' }
     return BookOpen;
   };
 
-  const Icon = getCategoryIcon(category);
+  let iconElement;
+  const iconComponent = getCategoryIcon(category);
+  iconElement = React.createElement(iconComponent, { className: "w-6 h-6 text-purple-600" });
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800 animate-fade-in">
       <div className="flex items-center mb-4 space-x-3">
-        <Icon className="w-6 h-6 text-purple-600" />
+        {iconElement}
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
           Immediate Actions Recommended
         </h3>
@@ -96,7 +99,7 @@ export default function ActionSteps({ actions, category, riskLevel = 'UNKNOWN' }
           </span>
         )}
       </div>
-      
+
       {displayActions.length === 0 ? (
         <div className="py-4 text-center">
           <p className="text-gray-500 dark:text-gray-400">
@@ -107,7 +110,7 @@ export default function ActionSteps({ actions, category, riskLevel = 'UNKNOWN' }
         <ul className="space-y-3">
           {displayActions.map((action, index) => (
             <li key={index} className="flex items-start space-x-3">
-              <div className="flex-shrink-0 w-6 h-6 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mt-0.5">
+              <div className="shrink-0 w-6 h-6 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mt-0.5">
                 <span className="text-sm font-semibold text-purple-600 dark:text-purple-300">
                   {index + 1}
                 </span>
